@@ -1,23 +1,57 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { productDetail } from '../data/mockData.js'
+import { useMemo, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { catalogProducts } from '../data/sareesCatalog.js'
+import { productDetail as fallbackDetail } from '../data/mockData.js'
+
+function buildDetail(product) {
+  if (!product) return fallbackDetail
+  return {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    mrp: product.mrp,
+    rating: product.rating ?? 4.5,
+    reviews: 48 + product.id * 3,
+    fabric: product.fabric,
+    color: product.color,
+    design: product.category,
+    length: '5.5 meters',
+    blouse: 'Included',
+    description: `${product.name} — handpicked ${product.fabric.toLowerCase()} weave with elegant drape. Ideal for festive and special occasions.`,
+    images: [product.img, '/images/product-2.svg', '/images/product-3.svg'],
+    categorySlug:
+      product.category === 'Silk Sarees'
+        ? 'silk'
+        : product.category === 'Cotton Sarees'
+          ? 'cotton'
+          : product.category.toLowerCase(),
+  }
+}
 
 export function ProductDetailPage() {
+  const { id } = useParams()
+  const detail = useMemo(() => {
+    const found = catalogProducts.find((p) => String(p.id) === String(id))
+    return buildDetail(found)
+  }, [id])
+
   const [activeImg, setActiveImg] = useState(0)
   const [qty, setQty] = useState(1)
-  const discount = Math.round((1 - productDetail.price / productDetail.mrp) * 100)
+  const discount = Math.round((1 - detail.price / detail.mrp) * 100)
+  const listPath = detail.categorySlug ? `/sarees/${detail.categorySlug}` : '/sarees'
 
   return (
     <>
       <div className="user-breadcrumb" style={{ maxWidth: 1280, margin: '1.5rem auto 0', padding: '0 2rem' }}>
-        <Link to="/">Home</Link> / <Link to="/shop/silk-sarees">Silk Sarees</Link> / {productDetail.name}
+        <Link to="/">Home</Link> / <Link to="/sarees">Sarees</Link> /{' '}
+        <Link to={listPath}>{detail.design}</Link> / {detail.name}
       </div>
       <div className="user-pdp">
         <div className="user-pdp__gallery">
           <div className="user-pdp__thumbs">
-            {productDetail.images.map((src, i) => (
+            {detail.images.map((src, i) => (
               <img
-                key={src}
+                key={`${src}-${i}`}
                 src={src}
                 alt=""
                 className={i === activeImg ? 'active' : ''}
@@ -26,32 +60,39 @@ export function ProductDetailPage() {
             ))}
           </div>
           <div className="user-pdp__main">
-            <img src={productDetail.images[activeImg]} alt={productDetail.name} />
+            <img src={detail.images[activeImg]} alt={detail.name} />
           </div>
         </div>
         <div>
-          <h1 className="user-pdp__title">{productDetail.name}</h1>
+          <h1 className="user-pdp__title">{detail.name}</h1>
           <p style={{ margin: '0.5rem 0' }}>
             <span className="user-stars">★★★★★</span>{' '}
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-              {productDetail.rating} ({productDetail.reviews} reviews)
+              {detail.rating} ({detail.reviews} reviews)
             </span>
           </p>
           <p style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--maroon)' }}>
-            ₹{productDetail.price.toLocaleString('en-IN')}{' '}
-            <span style={{ textDecoration: 'line-through', fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 400 }}>
-              ₹{productDetail.mrp.toLocaleString('en-IN')}
+            ₹{detail.price.toLocaleString('en-IN')}{' '}
+            <span
+              style={{
+                textDecoration: 'line-through',
+                fontSize: '1rem',
+                color: 'var(--text-muted)',
+                fontWeight: 400,
+              }}
+            >
+              ₹{detail.mrp.toLocaleString('en-IN')}
             </span>{' '}
             <span className="user-discount-tag">{discount}% OFF</span>
           </p>
           <table className="user-detail-table">
             <tbody>
               {[
-                ['Fabric', productDetail.fabric],
-                ['Color', productDetail.color],
-                ['Design', productDetail.design],
-                ['Length', productDetail.length],
-                ['Blouse', productDetail.blouse],
+                ['Fabric', detail.fabric],
+                ['Color', detail.color],
+                ['Category', detail.design],
+                ['Length', detail.length],
+                ['Blouse', detail.blouse],
               ].map(([k, v]) => (
                 <tr key={k}>
                   <td>{k}</td>
@@ -92,7 +133,7 @@ export function ProductDetailPage() {
         ))}
       </div>
       <p style={{ maxWidth: 1280, margin: '0 auto 2rem', padding: '0 2rem', color: 'var(--text-muted)' }}>
-        {productDetail.description}
+        {detail.description}
       </p>
     </>
   )

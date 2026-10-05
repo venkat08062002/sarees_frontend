@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a0e2c"/>
+      <stop offset="45%" stop-color="#7a2438"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+    <linearGradient id="silk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b1538"/>
+      <stop offset="100%" stop-color="#3d0a18"/>
+    </linearGradient>
+    <linearGradient id="zari" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8c547"/>
+      <stop offset="50%" stop-color="#fff3b0"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <ellipse cx="520" cy="480" rx="380" ry="120" fill="#000" opacity="0.15"/>
+  <path d="M380 80 Q520 120 560 280 T520 480 L320 480 Q280 320 340 180 T380 80Z" fill="url(#silk)" opacity="0.95"/>
+  <path d="M400 100 Q500 140 530 260 T490 460 L360 460 Q330 300 370 200 T400 100Z" fill="#5d1725" opacity="0.6"/>
+  <path d="M350 200 L580 200" stroke="url(#zari)" stroke-width="3" opacity="0.8"/>
+  <path d="M330 280 L600 280" stroke="url(#zari)" stroke-width="2" opacity="0.6"/>
+  <path d="M310 360 L620 360" stroke="url(#zari)" stroke-width="2" opacity="0.5"/>
+  <circle cx="640" cy="120" r="60" fill="#fff" opacity="0.06"/>
+  <circle cx="680" cy="380" r="90" fill="#fff" opacity="0.04"/>
+  <text x="48" y="460" fill="#fff" opacity="0.25" font-family="Georgia, serif" font-size="14">SareeStore Collection</text>
+</svg>

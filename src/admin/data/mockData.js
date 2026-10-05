@@ -1,8 +1,13 @@
+/** Local dummy visuals — always load offline */
 export const IMG = {
-  saree1: 'https://images.unsplash.com/photo-1610037124592-831f4a823f2d?w=400&q=80',
-  saree2: 'https://images.unsplash.com/photo-1583391733987-9589a5c9a1f6?w=400&q=80',
-  saree3: 'https://images.unsplash.com/photo-1617627143750-d86bc21e3517?w=400&q=80',
-  hero: 'https://images.unsplash.com/photo-1595587468428-850c2d510902?w=1200&q=80',
+  saree1: '/images/product-1.svg',
+  saree2: '/images/product-2.svg',
+  saree3: '/images/product-3.svg',
+  saree4: '/images/product-4.svg',
+  hero: '/images/hero-banner.svg',
+  promoWedding: '/images/promo-wedding.svg',
+  promoKanchipuram: '/images/promo-kanchipuram.svg',
+  promoNew: '/images/promo-new.svg',
 }
 
 export const dashboardStats = [
@@ -30,7 +35,7 @@ export const products = [
   { id: 1, name: 'Kanchipuram Silk Saree', category: 'Silk Sarees', price: '₹8,999', stock: 24, status: 'Active', img: IMG.saree1, sku: 'KS-001' },
   { id: 2, name: 'Banarasi Brocade Saree', category: 'Silk Sarees', price: '₹6,499', stock: 18, status: 'Active', img: IMG.saree2, sku: 'BB-102' },
   { id: 3, name: 'Cotton Handloom Saree', category: 'Cotton Sarees', price: '₹1,899', stock: 42, status: 'Active', img: IMG.saree3, sku: 'CH-220' },
-  { id: 4, name: 'Designer Tissue Saree', category: 'Designer', price: '₹4,299', stock: 8, status: 'Active', img: IMG.saree1, sku: 'DT-045' },
+  { id: 4, name: 'Designer Tissue Saree', category: 'Designer', price: '₹4,299', stock: 8, status: 'Active', img: IMG.saree4, sku: 'DT-045' },
 ]
 
 export const orders = [

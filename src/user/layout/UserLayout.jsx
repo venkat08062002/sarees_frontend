@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { Heart, ShoppingBag, User } from 'lucide-react'
+import { UserFooter } from '../components/UserFooter.jsx'
 import { navLinks } from '../data/mockData.js'
 import '../styles/user.css'
 
@@ -33,7 +34,20 @@ export function UserLayout() {
         <nav className="user-nav">
           <div className="user-nav__inner">
             {navLinks.map((l) => (
-              <NavLink key={l.label} to={l.to} end={l.to === '/'}>
+              <NavLink
+                key={l.label}
+                to={l.to}
+                end={
+                  l.to === '/' ||
+                  (typeof l.to === 'object' && l.to.pathname === '/' && !l.to.hash)
+                }
+                className={({ isActive, location }) => {
+                  if (l.label === 'Sarees' && location?.pathname?.startsWith('/sarees')) {
+                    return 'active'
+                  }
+                  return isActive ? 'active' : ''
+                }}
+              >
                 {l.label}
               </NavLink>
             ))}
@@ -43,9 +57,7 @@ export function UserLayout() {
       <main className="user-main">
         <Outlet />
       </main>
-      <footer className="user-footer">
-        © 2026 SareeStore — Tradition in Every Drape
-      </footer>
+      <UserFooter />
       <Link to="/admin" className="user-admin-link">
         Admin Panel
       </Link>

@@ -14,7 +14,7 @@ import { ReportsPage } from '../admin/pages/ReportsPage.jsx'
 import { SettingsPage } from '../admin/pages/SettingsPage.jsx'
 import { UserLayout } from '../user/layout/UserLayout.jsx'
 import { HomePage } from '../user/pages/HomePage.jsx'
-import { ProductListingPage } from '../user/pages/ProductListingPage.jsx'
+import { SareesPage } from '../user/pages/SareesPage.jsx'
 import { ProductDetailPage } from '../user/pages/ProductDetailPage.jsx'
 import { CartPage } from '../user/pages/CartPage.jsx'
 import { CheckoutPage } from '../user/pages/CheckoutPage.jsx'
@@ -43,7 +43,8 @@ function App() {
 
       <Route element={<UserLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="shop/silk-sarees" element={<ProductListingPage />} />
+        <Route path="sarees/:category?" element={<SareesPage />} />
+        <Route path="shop/silk-sarees" element={<Navigate to="/sarees/silk" replace />} />
         <Route path="product/:id" element={<ProductDetailPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />

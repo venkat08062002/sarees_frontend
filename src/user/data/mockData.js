@@ -1,43 +1,42 @@
 export { IMG, products } from '../../admin/data/mockData.js'
 
 export const categories = [
-  { name: 'Silk', icon: '🧵' },
-  { name: 'Cotton', icon: '🌿' },
-  { name: 'Banarasi', icon: '✨' },
-  { name: 'Designer', icon: '👗' },
-  { name: 'Wedding', icon: '💍' },
-  { name: 'Georgette', icon: '🎀' },
+  { name: 'Silk', icon: '🧵', to: '/sarees/silk' },
+  { name: 'Cotton', icon: '🌿', to: '/sarees/cotton' },
+  { name: 'Banarasi', icon: '✨', to: '/sarees/banarasi' },
+  { name: 'Designer', icon: '👗', to: '/sarees/designer' },
+  { name: 'Wedding', icon: '💍', to: '/sarees/wedding' },
+  { name: 'Georgette', icon: '🎀', to: '/sarees/georgette' },
 ]
 
 export const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Sarees', to: '/shop/silk-sarees' },
-  { label: 'Collections', to: '/shop/silk-sarees' },
-  { label: 'New Arrivals', to: '/shop/silk-sarees' },
-  { label: 'Offers', to: '/shop/silk-sarees' },
-  { label: 'Wedding', to: '/shop/silk-sarees' },
-  { label: 'Silk Sarees', to: '/shop/silk-sarees' },
-  { label: 'Cotton Sarees', to: '/shop/silk-sarees' },
-  { label: 'Contact', to: '/' },
+  { label: 'Sarees', to: '/sarees' },
+  { label: 'Collections', to: '/sarees' },
+  { label: 'New Arrivals', to: { pathname: '/', hash: 'new-arrivals' } },
+  { label: 'Offers', to: '/sarees' },
+  { label: 'Wedding', to: '/sarees/wedding' },
+  { label: 'Silk Sarees', to: '/sarees/silk' },
+  { label: 'Cotton Sarees', to: '/sarees/cotton' },
+  { label: 'Contact', to: { pathname: '/', hash: 'contact' } },
+]
+
+export const homePromos = [
+  { title: 'Wedding Collection', subtitle: 'Bridal silks & zari', img: '/images/promo-wedding.svg' },
+  { title: 'Kanchipuram Silk', subtitle: 'Temple border classics', img: '/images/promo-kanchipuram.svg' },
+  { title: 'New Arrivals', subtitle: 'Fresh picks this week', img: '/images/promo-new.svg' },
+]
+
+export const trustFeatures = [
+  { title: 'Free Shipping', desc: 'On orders above ₹1,499' },
+  { title: 'Easy Returns', desc: '7-day hassle-free returns' },
+  { title: 'Secure Payment', desc: 'UPI, cards & COD' },
+  { title: 'Authentic Weaves', desc: 'Handpicked from weavers' },
 ]
 
 export const cartItems = [
-  {
-    id: 1,
-    name: 'Kanchipuram Silk Saree',
-    price: 8999,
-    mrp: 12999,
-    qty: 1,
-    img: 'https://images.unsplash.com/photo-1610037124592-831f4a823f2d?w=200&q=80',
-  },
-  {
-    id: 2,
-    name: 'Banarasi Brocade Saree',
-    price: 6499,
-    mrp: 8999,
-    qty: 1,
-    img: 'https://images.unsplash.com/photo-1583391733987-9589a5c9a1f6?w=200&q=80',
-  },
+  { id: 1, name: 'Kanchipuram Silk Saree', price: 8999, mrp: 12999, qty: 1, img: '/images/product-1.svg' },
+  { id: 2, name: 'Banarasi Brocade Saree', price: 6499, mrp: 8999, qty: 1, img: '/images/product-2.svg' },
 ]
 
 export const addresses = [
@@ -46,9 +45,9 @@ export const addresses = [
 ]
 
 export const userOrders = [
-  { id: 'ORD10021', date: '04 Oct 2026', name: 'Kanchipuram Silk Saree', amount: 4580, status: 'Delivered', img: 'https://images.unsplash.com/photo-1610037124592-831f4a823f2d?w=120&q=80' },
-  { id: 'ORD10018', date: '02 Oct 2026', name: 'Cotton Handloom Saree', amount: 1899, status: 'Shipped', img: 'https://images.unsplash.com/photo-1617627143750-d86bc21e3517?w=120&q=80' },
-  { id: 'ORD10015', date: '28 Sep 2026', name: 'Designer Tissue Saree', amount: 4299, status: 'Processing', img: 'https://images.unsplash.com/photo-1610037124592-831f4a823f2d?w=120&q=80' },
+  { id: 'ORD10021', date: '04 Oct 2026', name: 'Kanchipuram Silk Saree', amount: 4580, status: 'Delivered', img: '/images/product-1.svg' },
+  { id: 'ORD10018', date: '02 Oct 2026', name: 'Cotton Handloom Saree', amount: 1899, status: 'Shipped', img: '/images/product-3.svg' },
+  { id: 'ORD10015', date: '28 Sep 2026', name: 'Designer Tissue Saree', amount: 4299, status: 'Processing', img: '/images/product-4.svg' },
 ]
 
 export const productDetail = {
@@ -65,9 +64,5 @@ export const productDetail = {
   blouse: 'Included',
   description:
     'Handwoven Kanchipuram silk saree with rich zari work. Perfect for weddings and festive occasions.',
-  images: [
-    'https://images.unsplash.com/photo-1610037124592-831f4a823f2d?w=600&q=80',
-    'https://images.unsplash.com/photo-1583391733987-9589a5c9a1f6?w=600&q=80',
-    'https://images.unsplash.com/photo-1617627143750-d86bc21e3517?w=600&q=80',
-  ],
+  images: ['/images/product-1.svg', '/images/product-2.svg', '/images/product-3.svg'],
 }
